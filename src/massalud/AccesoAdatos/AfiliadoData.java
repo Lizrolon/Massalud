@@ -66,6 +66,7 @@ public class AfiliadoData {
           
           afi = new Afiliado();
           afi.setIdAfiliado(id);
+          
           afi.setNombre(rs.getString("nombre"));
           afi.setApellido(rs.getString("apellido"));
           afi.setDni(rs.getInt("dni"));
@@ -186,7 +187,8 @@ public class AfiliadoData {
    return af;
    }
    public void  modificarAfi(Afiliado afi){
-     
+     AfiliadoData afiD = new AfiliadoData();
+     Afiliado afiliado = new Afiliado();
      String sql="UPDATE afiliado SET  nombre = ?, apellido = ?, telefono = ?, domicilio = ?,dni= ?, activo = ?  WHERE idAfiliado = ? ";
       PreparedStatement ps = null;
        try {
@@ -197,7 +199,8 @@ public class AfiliadoData {
            ps.setString(4, afi.getDomicilio());
            ps.setInt(5, afi.getDni());
            ps.setBoolean(6, afi.isActivo());
-            ps.setInt(7, afi.getIdAfiliado());
+           afiliado = afiD.buscarAfiliadoporDni(afi.getDni());
+            ps.setInt(7, afiliado.getIdAfiliado());
            int exito = ps.executeUpdate();
            
            if(exito>0){

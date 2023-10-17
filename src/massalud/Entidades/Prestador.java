@@ -92,8 +92,6 @@ public class Prestador {
         this.especialidad = especialidad;
     }
 
-    
-
   
     public boolean isActivo() {
         return activo;

@@ -31,16 +31,23 @@ public class Massalud {
         //dat.modificarAfi(afi);
         Especialidad esp= new Especialidad(3,"Odontologo");
         EspecialidadData data = new EspecialidadData();
+        
+       /* for (Especialidad arg : data.listarEsp()) {
+            System.out.println(arg);
+        }*/
         //data.guardarEsp(esp);
         Prestador pres = new Prestador(46725756, "Julian", "Rosaz", "Salta 19", 11452343,esp, true);
         
         PrestadorData presD=new  PrestadorData();
         //presD.guardarPrestador(pres);
        
-       Prestador ps = presD.buscarPres(8);
+       Prestador ps = presD.buscarPresDni(46732456);
         System.out.println(ps);
         //Especialidad es = data.buscarEp(1);
         //System.out.println(es);
+        EspecialidadData espD = new EspecialidadData();
+        Especialidad espppp =espD.buscarEp(1);
+        System.out.println(espppp);
         
                 
         

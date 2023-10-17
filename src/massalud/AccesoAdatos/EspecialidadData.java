@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import massalud.Entidades.Especialidad;
@@ -58,10 +59,51 @@ public class EspecialidadData {
    } 
    return esp;  
    }   
-   public void modificar(int id){}
-   public List<Especialidad> listarEsp(){
-        return null;
-   }
-   
-   
+    public Especialidad modificar(String especialidad, int id) {
+
+        Especialidad esp = new Especialidad();
+
+        String sql = "UPDATE especialidad SET especialidad = ? WHERE idEspecialidad = ?";
+
+        PreparedStatement ps = null;
+
+        try {
+            ps = con.prepareStatement(sql);
+
+            ps.setString(1, especialidad);
+            ps.setInt(2, id);
+
+            int nw = ps.executeUpdate();
+
+            if (nw > 0) {
+                JOptionPane.showMessageDialog(null, "Especialidad modificada");
+            } else {
+                JOptionPane.showMessageDialog(null, "error al modificar la especialidad.");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "error al acceder a tabla de especialidad " + ex.getMessage());
+        }
+        return esp;
+    }
+    
+    public List<Especialidad> listarEsp() {
+        List<Especialidad> esp = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM especialidad";
+            try (PreparedStatement ps = con.prepareStatement(sql);
+                    ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    Especialidad es = new Especialidad();
+                    es.setIdEspecialidad(rs.getInt("idEspecialidad"));
+                    es.setEspecialidad(rs.getString("especialidad"));
+                    esp.add(es);
+                }
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla especialidad: " + ex.getMessage());
+        }
+
+        return esp;
+    }
 }
