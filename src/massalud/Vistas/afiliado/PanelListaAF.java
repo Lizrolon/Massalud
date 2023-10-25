@@ -526,13 +526,13 @@ public class PanelListaAF extends javax.swing.JPanel {
 
                         boolean activo = jRactivo.isSelected();
                         
-                        JOptionPane.showMessageDialog(this, 
+                      /* JOptionPane.showMessageDialog(this, 
                                 " nombre: " + nombre+
                                 " apellido:  "+ apellido+ 
                                 " docu: "+ docu+ 
                                 " telefono: "+ telefono +
                                 " domicilio " + domicilio +
-                                " activo: " + activo);
+                                " activo: " + activo);*/
                         
 
                    

@@ -52,19 +52,21 @@ Especialidad esp = new Especialidad();
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setText("Nombre:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
         jtNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jPanel1.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 213, -1));
+        jPanel1.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 213, -1));
 
+        jBuscar.setBackground(new java.awt.Color(0, 153, 255));
         jBuscar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jBuscar.setForeground(new java.awt.Color(255, 255, 255));
         jBuscar.setText("Buscar");
         jBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, -1, -1));
+        jPanel1.add(jBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, -1, -1));
 
         jtespecialidad.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jtespecialidad.setModel(new javax.swing.table.DefaultTableModel(
@@ -80,23 +82,25 @@ Especialidad esp = new Especialidad();
         ));
         jScrollPane1.setViewportView(jtespecialidad);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 172, 683, 230));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 683, 230));
 
+        jGuardar.setBackground(new java.awt.Color(0, 153, 255));
         jGuardar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jGuardar.setForeground(new java.awt.Color(255, 255, 255));
         jGuardar.setText("Guardar");
         jGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(jGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, -1, -1));
+        jPanel1.add(jGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 230, 40));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText("ID:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
 
         jId.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jPanel1.add(jId, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 210, -1));
+        jPanel1.add(jId, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 210, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -125,11 +129,14 @@ Especialidad esp = new Especialidad();
             
             esp = new Especialidad(nombre);
             espD.guardarEsp(esp);
+            llenarT();
             limpiar();
             return;
         }else{
         esp = new Especialidad(esp.getIdEspecialidad(),nombre);
         espD.modificar(nombre, esp.getIdEspecialidad());
+        limpiar();
+        
         }
      
      llenarT();

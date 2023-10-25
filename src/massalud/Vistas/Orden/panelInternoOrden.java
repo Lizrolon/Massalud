@@ -650,5 +650,7 @@ public class panelInternoOrden extends javax.swing.JPanel {
        jLcartel.setText("Registrar una Nueva Orden");
        jBGuardar.setText("Registrar");
        jcFPago.setSelectedItem(null);
+       jtNombrePrestador.setText("");
+       jtNombreAfiliado.setText("");
    }
 }

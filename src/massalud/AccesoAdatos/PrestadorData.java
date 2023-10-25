@@ -216,7 +216,7 @@ public Prestador buscarPresDni(int dni) {
             
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al intentar acceder a la tabla Prestador "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "No se puede eliminar el prestador");
         }
     
    

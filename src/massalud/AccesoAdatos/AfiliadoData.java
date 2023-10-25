@@ -262,7 +262,7 @@ public class AfiliadoData {
             
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al intentar acceder a la tabla Afiliado "+ex.getMessage());
+            JOptionPane.showMessageDialog(null, "No se puede eliminar afiliado");
         }
     
    

@@ -320,11 +320,11 @@ public class PanelAfiliado extends javax.swing.JPanel {
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
       
         try {
-           if(jTDni.getText().length() < 8||jTDni.getText().length() > 8 ){
+           /*if(jTDni.getText().length() < 8||jTDni.getText().length() > 8 ){
                
                JOptionPane.showMessageDialog(this, "El Dni debe tener 8 digítos");
                return;
-           }
+           }*/
            if(jTDni.getText().isEmpty()){
            JOptionPane.showMessageDialog(this, "Ingrese DNI");
            return;
@@ -341,7 +341,7 @@ public class PanelAfiliado extends javax.swing.JPanel {
             jRactivo.setSelected(afi.isActivo());
 
             Activo();
-
+           jtIdAfiliado.setText(Integer.toString(afi.getIdAfiliado()));
             jTnombre.setText(afi.getNombre());
             jTnombre.setForeground(Color.black);
             jTapellido.setText(afi.getApellido());
@@ -425,13 +425,18 @@ public class PanelAfiliado extends javax.swing.JPanel {
                         limpiar();
                         return;
                     } else {
-                        afi = new Afiliado( nombre, apellido, docu, telefono, domicilio, activo);
-                        afiD.modificarAfi(afi);
+                        int aux=0;
+                        if(afi == null){
+                          aux=Integer.parseInt(jtIdAfiliado.getText());
+                        }else {
+                        aux=afi.getIdAfiliado(); }
+                        afi = new Afiliado(aux, nombre, apellido, docu, telefono, domicilio, activo);
+                        afiD.modificarAfi2(afi);
                         afi = null;
                         limpiar();
                         return;
                     }
-
+                    
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(this, "Telefono mal ingresado");
                 }
