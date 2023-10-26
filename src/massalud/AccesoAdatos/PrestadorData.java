@@ -216,7 +216,7 @@ public Prestador buscarPresDni(int dni) {
             
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se puede eliminar el prestador");
+            JOptionPane.showMessageDialog(null, "No se puede eliminar el prestador tiene ordenes activas");
         }
     
    

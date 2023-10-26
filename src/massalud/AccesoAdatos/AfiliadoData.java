@@ -262,7 +262,7 @@ public class AfiliadoData {
             
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se puede eliminar afiliado");
+            JOptionPane.showMessageDialog(null, "No se puede eliminar afiliado tiene ordenes activas");
         }
     
    

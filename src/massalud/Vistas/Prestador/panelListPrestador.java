@@ -79,6 +79,7 @@ public class panelListPrestador extends javax.swing.JPanel {
         jSeparator4 = new javax.swing.JSeparator();
         jBuscar1 = new javax.swing.JLabel();
         JlEliminar = new javax.swing.JLabel();
+        jBuscarActivo = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -106,10 +107,7 @@ public class panelListPrestador extends javax.swing.JPanel {
         jSeparator3.setForeground(new java.awt.Color(0, 102, 255));
         jPanelprincipal.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 150, 10));
 
-        jTDni.setBackground(new java.awt.Color(255, 255, 255));
-        jTDni.setForeground(new java.awt.Color(0, 0, 0));
         jTDni.setBorder(null);
-        jTDni.setCaretColor(new java.awt.Color(0, 0, 0));
         jTDni.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTDniMouseClicked(evt);
@@ -130,10 +128,7 @@ public class panelListPrestador extends javax.swing.JPanel {
         jLabel1.setText("Nombre: ");
         jPanelprincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        jTnombre.setBackground(new java.awt.Color(255, 255, 255));
-        jTnombre.setForeground(new java.awt.Color(0, 0, 0));
         jTnombre.setBorder(null);
-        jTnombre.setCaretColor(new java.awt.Color(0, 0, 0));
         jTnombre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTnombreMouseClicked(evt);
@@ -157,8 +152,6 @@ public class panelListPrestador extends javax.swing.JPanel {
         jLabel4.setText("Apellido:");
         jPanelprincipal.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
-        jTapellido.setBackground(new java.awt.Color(255, 255, 255));
-        jTapellido.setForeground(new java.awt.Color(0, 0, 0));
         jTapellido.setBorder(null);
         jTapellido.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -188,8 +181,6 @@ public class panelListPrestador extends javax.swing.JPanel {
         jLabel6.setText("Telefono:");
         jPanelprincipal.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, 20));
 
-        jTtelefono.setBackground(new java.awt.Color(255, 255, 255));
-        jTtelefono.setForeground(new java.awt.Color(0, 0, 0));
         jTtelefono.setBorder(null);
         jTtelefono.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -231,8 +222,6 @@ public class panelListPrestador extends javax.swing.JPanel {
         jLabel9.setText("Domicilio:");
         jPanelprincipal.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, -1, -1));
 
-        jTDomicilio1.setBackground(new java.awt.Color(255, 255, 255));
-        jTDomicilio1.setForeground(new java.awt.Color(0, 0, 0));
         jTDomicilio1.setBorder(null);
         jTDomicilio1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -265,13 +254,17 @@ public class panelListPrestador extends javax.swing.JPanel {
         });
         jPanelprincipal.add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 170, 30));
 
-        jcEspecialidad.setBackground(new java.awt.Color(255, 255, 255));
         jcEspecialidad.setForeground(new java.awt.Color(0, 102, 204));
         jcEspecialidad.setBorder(null);
         jPanelprincipal.add(jcEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 150, 20));
 
         jlActivo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jPanelprincipal.add(jlActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, 50, 20));
+        jlActivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlActivoMouseClicked(evt);
+            }
+        });
+        jPanelprincipal.add(jlActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 70, 20));
 
         jtOrdenes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -300,12 +293,9 @@ public class panelListPrestador extends javax.swing.JPanel {
                 jBuscarPrestadorMouseClicked(evt);
             }
         });
-        jPanelprincipal.add(jBuscarPrestador, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 18, 30, -1));
+        jPanelprincipal.add(jBuscarPrestador, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 40, -1));
 
-        jtIdPrestador.setBackground(new java.awt.Color(255, 255, 255));
-        jtIdPrestador.setForeground(new java.awt.Color(0, 0, 0));
         jtIdPrestador.setBorder(null);
-        jtIdPrestador.setCaretColor(new java.awt.Color(0, 0, 0));
         jtIdPrestador.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jtIdPrestadorMousePressed(evt);
@@ -341,7 +331,7 @@ public class panelListPrestador extends javax.swing.JPanel {
                 jBuscar1MouseClicked(evt);
             }
         });
-        jPanelprincipal.add(jBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 60, 40));
+        jPanelprincipal.add(jBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 60, 40));
 
         JlEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/imagenes/eliminarp.png"))); // NOI18N
         JlEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -350,7 +340,16 @@ public class panelListPrestador extends javax.swing.JPanel {
                 JlEliminarMouseClicked(evt);
             }
         });
-        jPanelprincipal.add(JlEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, -1, -1));
+        jPanelprincipal.add(JlEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, -1, -1));
+
+        jBuscarActivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/imagenes/search_find_lupa_21889.png"))); // NOI18N
+        jBuscarActivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBuscarActivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBuscarActivoMouseClicked(evt);
+            }
+        });
+        jPanelprincipal.add(jBuscarActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 40, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -698,11 +697,55 @@ public class panelListPrestador extends javax.swing.JPanel {
        }
     }//GEN-LAST:event_JlEliminarMouseClicked
 
+    private void jBuscarActivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBuscarActivoMouseClicked
+
+        try {
+            boolean activo=jRactivo.isSelected();
+
+            boolean aux = false;
+            borrarT();
+            for (Prestador pres : presD.listarPrestador()) {
+
+                if (pres.isActivo()==activo) {
+
+                    
+                    aux = true;
+                    
+
+                    String Act = "";
+                    if(pres.isActivo()==true){
+                        Act="activo";
+                    }else if (pres.isActivo()==false){
+                        Act="Inactivo";
+                    };
+                    modelo.addRow(new Object[]{
+                        pres.getIdPrestador(),
+                        pres.getDni(),
+                        pres.getNombre(),
+                        pres.getApellido(),
+                        pres.getDomicilio(),
+                        pres.getTelefono(),
+                        Act
+                    });
+
+                }
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Seleccione Activo o Inactivo");
+        }
+    }//GEN-LAST:event_jBuscarActivoMouseClicked
+
+    private void jlActivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlActivoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlActivoMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JlEliminar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JLabel jBuscar1;
+    private javax.swing.JLabel jBuscarActivo;
     private javax.swing.JLabel jBuscarPrestador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

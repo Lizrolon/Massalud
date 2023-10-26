@@ -414,7 +414,9 @@ public class PanelAfiliado extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, "Ingrese el telefono");
                         return;
                     }
-                    int telefono = Integer.parseInt(jTtelefono.getText());
+                   
+                    
+                   int telefono = Integer.parseInt(jTtelefono.getText());
 
                     boolean activo = jRactivo.isSelected();
 
