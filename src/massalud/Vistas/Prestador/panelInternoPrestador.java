@@ -523,7 +523,8 @@ public class panelInternoPrestador extends javax.swing.JPanel {
 
             jRactivo.setSelected(pres.isActivo());
             Activo();
-
+            
+            jtIdAfiliado.setText(Integer.toString(pres.getIdPrestador()));
             jTnombre.setText(pres.getNombre());
             jTnombre.setForeground(Color.black);
             jTapellido.setText(pres.getApellido());

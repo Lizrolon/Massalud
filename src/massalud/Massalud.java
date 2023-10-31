@@ -29,29 +29,30 @@ public class Massalud {
             System.out.println(ar.toString());
         }*/
         //dat.modificarAfi(afi);
-       // Especialidad esp= new Especialidad(3,"Odontologo");
-       // EspecialidadData data = new EspecialidadData();
+        Especialidad esp= new Especialidad(3,"Odontologo");
+        EspecialidadData data = new EspecialidadData();
         
        /* for (Especialidad arg : data.listarEsp()) {
             System.out.println(arg);
         }*/
         //data.guardarEsp(esp);
-       // Prestador pres = new Prestador(46725756, "Julian", "Rosaz", "Salta 19", 11452343,esp, true);
+        Prestador pres = new Prestador(46725756, "Julian", "Rosaz", "Salta 19", 11452343,esp, true);
         
-       // PrestadorData presD=new  PrestadorData();
+        PrestadorData presD=new  PrestadorData();
         //presD.guardarPrestador(pres);
        
-      // Prestador ps = presD.buscarPres(4);
+       Prestador ps = presD.buscarPres(4);
        
-       // System.out.println(ps);
+        System.out.println(ps);
         //Especialidad es = data.buscarEp(1);
         //System.out.println(es);
         /*EspecialidadData espD = new EspecialidadData();
         Especialidad espppp =espD.buscarEp(1);
         System.out.println(espppp);*/
-        //int aux= Integer.MAX_VALUE;
-         //System.out.println(aux); 
-         
+        int aux= Integer.MAX_VALUE;
+        long aux1 = Long.MAX_VALUE;
+        System.out.println(Integer.MAX_VALUE<999999999);
+                
         
     }
     

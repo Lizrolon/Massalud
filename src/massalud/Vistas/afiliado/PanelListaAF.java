@@ -14,9 +14,11 @@ import massalud.Entidades.Prestador;
 
 
 public class PanelListaAF extends javax.swing.JPanel {
+    
     private Connection con = null;
     Afiliado afi = new Afiliado();
     AfiliadoData afiD = new AfiliadoData();
+    
     DefaultTableModel modelo= new DefaultTableModel(){
         @Override
         public boolean isCellEditable(int i, int i1) {
@@ -65,6 +67,7 @@ public class PanelListaAF extends javax.swing.JPanel {
         jRactivo = new javax.swing.JRadioButton();
         jBGuardar = new javax.swing.JButton();
         JlEliminar = new javax.swing.JLabel();
+        jBuscarActivo = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -129,7 +132,7 @@ public class PanelListaAF extends javax.swing.JPanel {
                 jBuscarPrestador1MouseClicked(evt);
             }
         });
-        jPanel1.add(jBuscarPrestador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 30, -1));
+        jPanel1.add(jBuscarPrestador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 30, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
@@ -271,6 +274,7 @@ public class PanelListaAF extends javax.swing.JPanel {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, -1, -1));
 
         jRactivo.setBackground(new java.awt.Color(0, 153, 255));
+        jRactivo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jRactivo.setForeground(new java.awt.Color(255, 255, 255));
         jRactivo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -280,7 +284,7 @@ public class PanelListaAF extends javax.swing.JPanel {
                 jRactivoMousePressed(evt);
             }
         });
-        jPanel1.add(jRactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, -1, -1));
+        jPanel1.add(jRactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, -1, -1));
 
         jBGuardar.setBackground(new java.awt.Color(0, 153, 255));
         jBGuardar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -303,6 +307,14 @@ public class PanelListaAF extends javax.swing.JPanel {
             }
         });
         jPanel1.add(JlEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 140, -1, -1));
+
+        jBuscarActivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/imagenes/search_find_lupa_21889.png"))); // NOI18N
+        jBuscarActivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBuscarActivoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jBuscarActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -343,24 +355,8 @@ public class PanelListaAF extends javax.swing.JPanel {
 
                 if (afi.isActivo()==activo) {
 
-////                    jTDni.setText(Integer.toString(afi.getDni()));
-////                    jTDni.setForeground(Color.black);
-////
-////                    jTnombre.setText(afi.getNombre());
-////                    jTnombre.setForeground(Color.black);
-////                    jTapellido.setText(afi.getApellido());
-////                    jTapellido.setForeground(Color.black);
-////                    jTtelefono.setText(Integer.toString(afi.getTelefono()));
-////                    jTtelefono.setForeground(Color.black);
-////                    jTDomicilio.setText(afi.getDomicilio());
-////                    jTDomicilio.setForeground(Color.black);
-////
-////                    jRactivo.setSelected(afi.isActivo());
-
-                   // Activo();
                     aux = true;
-                    //jBGuardar.setText("Guardar modificacion");
-                  
+                   
                       String Act = "";
             if(afi.isActivo()==true){
                   Act="activo";  
@@ -536,16 +532,6 @@ public class PanelListaAF extends javax.swing.JPanel {
                     try {
 
                         boolean activo = jRactivo.isSelected();
-                        
-                      /* JOptionPane.showMessageDialog(this, 
-                                " nombre: " + nombre+
-                                " apellido:  "+ apellido+ 
-                                " docu: "+ docu+ 
-                                " telefono: "+ telefono +
-                                " domicilio " + domicilio +
-                                " activo: " + activo);*/
-                        
-
                    
                         Afiliado afi2 = new Afiliado(id , nombre, apellido, docu, telefono, domicilio, activo);
                         afiD.modificarAfi2(afi2);
@@ -621,50 +607,64 @@ public class PanelListaAF extends javax.swing.JPanel {
     }//GEN-LAST:event_jtTAblaAfiliadoMouseClicked
 
     private void jBuscarPrestador1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBuscarPrestador1MouseClicked
-            try {
+             
+        try {
             if (jtIdAfiliado.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Ingrese un id para buscar");
+                JOptionPane.showMessageDialog(this, "Ingrese un Id");
                 return;
             }
-            int id = Integer.parseInt(jtIdAfiliado.getText());
+
+            int Id = Integer.parseInt(jtIdAfiliado.getText());
 
             boolean aux = false;
+            borrarT();
+            for (Afiliado afi : afiD.listarAfiliados()) {
 
-            for (Afiliado afi2 : afiD.listarAfiliados()) {
-                
+                if (afi.getIdAfiliado() == Id) {
 
-                if (afi2.getIdAfiliado() == id) {
-                    afi = afi2;
-                    jTDni.setText(Integer.toString(afi2.getDni()));
+                    jTDni.setText(Integer.toString(afi.getDni()));
                     jTDni.setForeground(Color.black);
 
-                    jTnombre.setText(afi2.getNombre());
+                    jTnombre.setText(afi.getNombre());
                     jTnombre.setForeground(Color.black);
-                    jTapellido.setText(afi2.getApellido());
+                    jTapellido.setText(afi.getApellido());
                     jTapellido.setForeground(Color.black);
-                    jTtelefono.setText(Integer.toString(afi2.getTelefono()));
+                    jTtelefono.setText(Integer.toString(afi.getTelefono()));
                     jTtelefono.setForeground(Color.black);
-                    jTDomicilio.setText(afi2.getDomicilio());
+                    jTDomicilio.setText(afi.getDomicilio());
                     jTDomicilio.setForeground(Color.black);
 
-                    jRactivo.setSelected(afi2.isActivo());
+                    jRactivo.setSelected(afi.isActivo());
 
                     Activo();
                     aux = true;
-                    jBGuardar.setText("Guardar modificacion");
+
+                    String Act = "";
+                    if (afi.isActivo() == true) {
+                        Act = "activo";
+                    } else if (afi.isActivo() == false) {
+                        Act = "Inactivo";
+                    };
+                    modelo.addRow(new Object[]{
+                        afi.getIdAfiliado(),
+                        afi.getDni(),
+                        afi.getNombre(),
+                        afi.getApellido(),
+                        afi.getDomicilio(),
+                        afi.getTelefono(),
+                        Act
+                    });
+
                     return;
                 }
             }
             if (!aux) {
                 JOptionPane.showMessageDialog(this, "Afiliado no encontrado");
-                limpiar();
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Id mal ingresado");
-        }
-   
 
-        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Id mal Ingresado");
+        }
 
     }//GEN-LAST:event_jBuscarPrestador1MouseClicked
 
@@ -672,6 +672,7 @@ public class PanelListaAF extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JlEliminar;
     private javax.swing.JButton jBGuardar;
+    private javax.swing.JLabel jBuscarActivo;
     private javax.swing.JLabel jBuscarPrestador1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -760,4 +761,5 @@ public void limpiar(){
     }
 
 }
+
 }

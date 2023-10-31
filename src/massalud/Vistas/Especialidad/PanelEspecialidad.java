@@ -5,6 +5,7 @@
  */
 package massalud.Vistas.Especialidad;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import massalud.AccesoAdatos.EspecialidadData;
@@ -15,7 +16,14 @@ import massalud.Entidades.Especialidad;
  * @author Michi
  */
 public class PanelEspecialidad extends javax.swing.JPanel {
-DefaultTableModel modelo = new DefaultTableModel();
+    
+DefaultTableModel modelo = new DefaultTableModel(){
+    @Override
+    public boolean isCellEditable(int i, int i1) {
+        return false;
+    }
+    
+};
 EspecialidadData espD = new EspecialidadData();
 Especialidad esp = new Especialidad();
     /**
@@ -46,16 +54,17 @@ Especialidad esp = new Especialidad();
         jGuardar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jId = new javax.swing.JTextField();
+        jlBorrar = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setText("Nombre:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
 
         jtNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jPanel1.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 213, -1));
+        jPanel1.add(jtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 213, -1));
 
         jBuscar.setBackground(new java.awt.Color(0, 153, 255));
         jBuscar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -66,7 +75,7 @@ Especialidad esp = new Especialidad();
                 jBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, -1, -1));
+        jPanel1.add(jBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, 30));
 
         jtespecialidad.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jtespecialidad.setModel(new javax.swing.table.DefaultTableModel(
@@ -80,27 +89,40 @@ Especialidad esp = new Especialidad();
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtespecialidad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtespecialidadMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtespecialidad);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 683, 230));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 162, 683, 240));
 
         jGuardar.setBackground(new java.awt.Color(0, 153, 255));
         jGuardar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jGuardar.setForeground(new java.awt.Color(255, 255, 255));
-        jGuardar.setText("Guardar");
+        jGuardar.setText("Guardar nuevo");
         jGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(jGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 230, 40));
+        jPanel1.add(jGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, 30));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setText("ID:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
 
         jId.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jPanel1.add(jId, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 210, -1));
+        jPanel1.add(jId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 210, -1));
+
+        jlBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/massalud/imagenes/eliminar32.png"))); // NOI18N
+        jlBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlBorrarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jlBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -135,8 +157,9 @@ Especialidad esp = new Especialidad();
         }else{
         esp = new Especialidad(esp.getIdEspecialidad(),nombre);
         espD.modificar(nombre, esp.getIdEspecialidad());
+        jGuardar.setText("Guardar Nuevo");
         limpiar();
-        
+        llenarT();
         }
      
      llenarT();
@@ -149,10 +172,42 @@ Especialidad esp = new Especialidad();
         }
         int id = Integer.parseInt(jId.getText());
         esp= espD.buscarEp(id);
+        
         jtNombre.setText(esp.getEspecialidad());
-        jGuardar.setText("Modificar");
+        jGuardar.setText("Guardar modificacion");
         
     }//GEN-LAST:event_jBuscarActionPerformed
+
+    private void jlBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBorrarMouseClicked
+        // TODO add your handling code here:ç
+         try{
+        if (jId.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un Id");
+            return;
+        }
+        int id= Integer.parseInt(jId.getText());
+        espD.borrarEspecialidad(id);
+       
+        llenarT();
+        limpiar();
+       }catch(NumberFormatException ex){
+           JOptionPane.showMessageDialog(this, "Id mal ingresado");
+       }
+    
+    }//GEN-LAST:event_jlBorrarMouseClicked
+
+    private void jtespecialidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtespecialidadMouseClicked
+        // TODO add your handling code here:
+        if (evt.getClickCount()== 2) {
+ 
+            int fila = jtespecialidad.getSelectedRow();
+            jId.setText(Integer.toString((int)modelo.getValueAt(fila, 0)));
+            jId.setEditable(false);
+            jtNombre.setText((String)modelo.getValueAt(fila, 1));
+            jGuardar.setText("Guardar modificacion");
+            
+        }
+    }//GEN-LAST:event_jtespecialidadMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -163,6 +218,7 @@ Especialidad esp = new Especialidad();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jlBorrar;
     private javax.swing.JTextField jtNombre;
     private javax.swing.JTable jtespecialidad;
     // End of variables declaration//GEN-END:variables

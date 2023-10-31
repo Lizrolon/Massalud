@@ -106,8 +106,27 @@ public class EspecialidadData {
 
         return esp;
     }
-    public void eliminar(Especialidad esp){
     
-    
+    public void borrarEspecialidad(int idEspecialidad) {
+        String sql = "DELETE FROM especialidad WHERE idEspecialidad= ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, idEspecialidad);
+            int fila = ps.executeUpdate();
+            if (fila > 0) {
+
+                JOptionPane.showMessageDialog(null, "Especialidad eliminado correctamente");
+
+            } else {
+
+                JOptionPane.showMessageDialog(null, "La especialidad que desea eliminar no se encuentra en la base de datos");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error, la especialidad seleccionada tiene pretadores activos");
+            return;
+        }
     }
 }
