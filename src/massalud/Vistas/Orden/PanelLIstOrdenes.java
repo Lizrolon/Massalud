@@ -93,6 +93,7 @@ public class PanelLIstOrdenes extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jtOrdenes.setBackground(new java.awt.Color(255, 255, 255));
         jtOrdenes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jtOrdenes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -129,7 +130,9 @@ public class PanelLIstOrdenes extends javax.swing.JPanel {
         jlIdOrden.setText("IdOrden");
         jPanel1.add(jlIdOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 20));
 
+        jtIdOrden.setForeground(new java.awt.Color(0, 0, 0));
         jtIdOrden.setBorder(null);
+        jtIdOrden.setCaretColor(new java.awt.Color(0, 0, 0));
         jPanel1.add(jtIdOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 150, 20));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -150,7 +153,9 @@ public class PanelLIstOrdenes extends javax.swing.JPanel {
         jLabel8.setText("Importe");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, 20));
 
+        jtImporte.setForeground(new java.awt.Color(0, 0, 0));
         jtImporte.setBorder(null);
+        jtImporte.setCaretColor(new java.awt.Color(0, 0, 0));
         jPanel1.add(jtImporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 180, 20));
 
         jBGuardar.setBackground(new java.awt.Color(0, 153, 255));
@@ -184,7 +189,9 @@ public class PanelLIstOrdenes extends javax.swing.JPanel {
         jcAfialiado.setEnabled(false);
         jPanel1.add(jcAfialiado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 30, -1));
 
+        jtIdAfiliado1.setForeground(new java.awt.Color(0, 0, 0));
         jtIdAfiliado1.setBorder(null);
+        jtIdAfiliado1.setCaretColor(new java.awt.Color(0, 0, 0));
         jtIdAfiliado1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jtIdAfiliado1MousePressed(evt);
@@ -205,7 +212,9 @@ public class PanelLIstOrdenes extends javax.swing.JPanel {
         });
         jPanel1.add(jtIdAfiliado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 110, 20));
 
+        jtIdPrestador1.setForeground(new java.awt.Color(0, 0, 0));
         jtIdPrestador1.setBorder(null);
+        jtIdPrestador1.setCaretColor(new java.awt.Color(0, 0, 0));
         jtIdPrestador1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtIdPrestador1MouseClicked(evt);
@@ -264,7 +273,7 @@ public class PanelLIstOrdenes extends javax.swing.JPanel {
             }
         });
         jPanel1.add(jlEliminarPres, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 40, 50));
-        jPanel1.add(jdFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 150, -1));
+        jPanel1.add(jdFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 140, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

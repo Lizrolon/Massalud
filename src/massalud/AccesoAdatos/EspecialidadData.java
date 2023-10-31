@@ -106,4 +106,8 @@ public class EspecialidadData {
 
         return esp;
     }
+    public void eliminar(Especialidad esp){
+    
+    
+    }
 }
